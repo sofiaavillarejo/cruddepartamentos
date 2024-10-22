@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Global from './Global';
 import loadingImage from './../assets/images/loading.jpg';
+import { NavLink } from 'react-router-dom';
 
 export default class HomeDepartamentos extends Component {
   state = {
@@ -17,6 +18,15 @@ export default class HomeDepartamentos extends Component {
         departamentos: response.data,
         status: true
       })
+    })
+  }
+  //el id viene desde el btn de borrar
+  deleteDpto = (iddpto) => {
+    let request = "api/departamentos/" + iddpto;
+    let url = Global.apiDptos + request;
+    axios.delete(url).then(response => {
+      console.log("Borrando...");
+      this.loadDptos();
     })
   }
   componentDidMount = () =>{
@@ -42,7 +52,11 @@ export default class HomeDepartamentos extends Component {
               { this.state.departamentos.map((dpto, index) => {
                 return(
                   <tr key={index}>
-                    <td>{dpto.numero}</td>
+                    {/* enviamos por parametro el id del dpto en el que se clique para ver sus detalles */}
+                    <td>{dpto.numero} 
+                      ➡️ <NavLink to={"/detalledpto/" + dpto.numero}>Detalles</NavLink> 
+                      ➡️ <NavLink to={"/update/" + dpto.numero + "/" + dpto.nombre + "/" + dpto.localidad}>Update</NavLink>
+                      ➡️ <button className='btn btn-danger' onClick={ () => this.deleteDpto(dpto.numero)}>Borrar</button></td>
                     <td>{dpto.nombre}</td>
                     <td>{dpto.localidad}</td>
                   </tr>
