@@ -3,6 +3,8 @@ import axios from 'axios';
 import Global from './Global';
 import loadingImage from './../assets/images/loading.jpg';
 import { NavLink } from 'react-router-dom';
+import EliminarDepartamento from './EliminarDepartamento';
+import { Navigate } from 'react-router-dom';
 
 export default class HomeDepartamentos extends Component {
   state = {
@@ -29,6 +31,7 @@ export default class HomeDepartamentos extends Component {
       this.loadDptos();
     })
   }
+
   componentDidMount = () =>{
     this.loadDptos();
   }
@@ -56,7 +59,7 @@ export default class HomeDepartamentos extends Component {
                     <td>{dpto.numero} 
                       ➡️ <NavLink to={"/detalledpto/" + dpto.numero}>Detalles</NavLink> 
                       ➡️ <NavLink to={"/update/" + dpto.numero + "/" + dpto.nombre + "/" + dpto.localidad}>Update</NavLink>
-                      ➡️ <button className='btn btn-danger' onClick={ () => this.deleteDpto(dpto.numero)}>Borrar</button></td>
+                      ➡️ <button className='btn btn-danger'><NavLink to={"/eliminar/" + dpto.numero }>Borrar</NavLink></button></td>
                     <td>{dpto.nombre}</td>
                     <td>{dpto.localidad}</td>
                   </tr>

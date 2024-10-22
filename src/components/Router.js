@@ -5,6 +5,7 @@ import MenuDepartamentos from './MenuDepartamentos'
 import CreateDepartamentos from './CreateDepartamentos'
 import DetalleDepartamento from './DetalleDepartamento'
 import UpdateDepartamento from './UpdateDepartamento'
+import EliminarDepartamento from './EliminarDepartamento'
 
 export default class Router extends Component {
   render() {
@@ -18,6 +19,11 @@ export default class Router extends Component {
       let {iddpto, nombre, localidad} = useParams();
       return(<UpdateDepartamento id={iddpto} nombre={nombre} localidad={localidad}/>)
     }
+
+    function EliminarDepartamentoElement() {
+      let {iddpto} = useParams();
+      return(<EliminarDepartamento id={iddpto}/>)
+    }
     return (
       <div>
         <BrowserRouter>
@@ -28,6 +34,7 @@ export default class Router extends Component {
             {/* aqui se llama a la funcion!!!! */}
             <Route path='/detalledpto/:iddpto' element={<DetalleDptoElement/>} />
             <Route path='/update/:iddpto/:nombre/:localidad' element={<UpdateDepartamentoElement/>} />
+            <Route path='/eliminar/:iddpto' element={<EliminarDepartamentoElement/>} />
           </Routes>
         </BrowserRouter>
       </div>

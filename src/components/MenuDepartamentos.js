@@ -22,6 +22,9 @@ export default class MenuDepartamentos extends Component {
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/update">Update dpto</NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/eliminar">Eliminar dpto</NavLink>
+                </li>
                 <li className="nav-item dropdown">
                   <NavLink className="nav-link dropdown-toggle" to="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</NavLink>
                   <ul className="dropdown-menu">
