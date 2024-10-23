@@ -22,7 +22,7 @@ export default class HomeDepartamentos extends Component {
       })
     })
   }
-  //el id viene desde el btn de borrar
+  //el id viene desde el btn de borrar (primero usamos esta, pero luego nos pidio hacerlo desde otro componente)
   deleteDpto = (iddpto) => {
     let request = "api/departamentos/" + iddpto;
     let url = Global.apiDptos + request;

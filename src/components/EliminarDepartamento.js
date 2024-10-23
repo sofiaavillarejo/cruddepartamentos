@@ -19,7 +19,6 @@ export default class EliminarDepartamento extends Component {
     })
   }
   
-
   render() {
     return (
       <div>
